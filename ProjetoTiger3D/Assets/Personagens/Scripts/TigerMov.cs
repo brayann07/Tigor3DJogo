@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class TigerMov : MonoBehaviour
@@ -36,7 +37,13 @@ public class TigerMov : MonoBehaviour
                 MoveDirection = transform.TransformDirection(MoveDirection);
                 anim.SetInteger("transitions", 1);
             }
-         
+            if (Input.GetKey(KeyCode.S))
+            {
+                MoveDirection = Vector3.back * Speed;
+                MoveDirection = transform.TransformDirection(MoveDirection);
+                anim.SetInteger("transitions", 1);
+            }
+            
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
                 MoveDirection = Vector3.forward * (3.0f * Speed);
@@ -49,7 +56,7 @@ public class TigerMov : MonoBehaviour
                 anim.SetInteger("transitions", 0);
                 
             }
-            if (Input.GetKeyUp(KeyCode.W))
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S)) 
             {
                 MoveDirection = Vector3.zero;
                 anim.SetInteger("transitions", 0);
@@ -58,14 +65,7 @@ public class TigerMov : MonoBehaviour
         }
         Rotation += Input.GetAxis("Horizontal") * RotSpeed * Time.deltaTime;
         transform.eulerAngles = new Vector3(0, Rotation, 0);
-        if(Rotation > 0)
-        {
-            anim.SetInteger("transitions", 1);
-        }
-        if(Rotation < 0)
-        {
-            anim.SetInteger("transitions", 0);
-        }
+       
 
         MoveDirection.y -= Gravity * Time.deltaTime;
         controller.Move(MoveDirection * Time.deltaTime);
