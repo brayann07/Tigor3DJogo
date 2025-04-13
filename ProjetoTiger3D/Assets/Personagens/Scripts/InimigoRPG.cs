@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.UIElements;
+
 public class InimigoRPG : MonoBehaviour
 {
     public Transform posicaodojogador;
@@ -28,5 +29,8 @@ void Update()
         }
         transform.position = direcao;
         direcao.y -= Gravidade * Time.deltaTime;
+
     }
+   
 }
+
