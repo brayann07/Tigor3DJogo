@@ -3,30 +3,23 @@ using UnityEngine;
 public class CameraSeguir : MonoBehaviour
 {
     public Transform target;
-    public float distance = 5.0f;
-    public float height = 5.0f;
-    public float rotationSpeed = 5.0f;
-    public float smoothSpeed = 0.125f;
+    public Vector3 offset = new Vector3(0, 5, -10);
+    public float sensibilidadedomouse = 3f;
+    public float suavilidade = 0.1f;
 
-    private float currentRotation = 0f;
-    private Vector3 offset;
+    private Vector2 rotacaoAtual;
+    private Vector3 posicaoAtualVelocidade;
 
-    void Start()
+    void LateUpdate() // a gente n usa update pq é a cada frame 
     {
-        offset = new Vector3(0, height, -distance);
-    }
+        rotacaoAtual.x += Input.GetAxis("Mouse X") * sensibilidadedomouse;
+        rotacaoAtual.y -= Input.GetAxis("Mouse Y") * sensibilidadedomouse;
+        rotacaoAtual.y = Mathf.Clamp(rotacaoAtual.y, -30f, 60f); // pra limitar a camera!
 
-    void LateUpdate()
-    {
-        float horizontalInput = Input.GetAxis("Mouse X");
-        currentRotation += horizontalInput * rotationSpeed;
+        Quaternion rotacao = Quaternion.Euler(rotacaoAtual.y, rotacaoAtual.x, 0);
+        Vector3 posicaoDesejada = target.position + rotacao * offset;
 
-        Quaternion rotation = Quaternion.Euler(0, currentRotation, 0);
-        Vector3 desiredPosition = target.position + rotation * offset;
-
-        Vector3 smoothedPosition = Vector3.Lerp(transform.position, desiredPosition, smoothSpeed);
-        transform.position = smoothedPosition;
-
+        transform.position = Vector3.SmoothDamp(transform.position, posicaoDesejada, ref posicaoAtualVelocidade, suavilidade);
         transform.LookAt(target);
     }
 }
