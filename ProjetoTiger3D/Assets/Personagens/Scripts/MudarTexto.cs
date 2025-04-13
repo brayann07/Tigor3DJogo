@@ -1,22 +1,31 @@
 using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
+using UnityEngine.Rendering.Universal;
 
-public class MudarTexto : MonoBehaviour {
+public class MudarTexto : MonoBehaviour
+{
     private TMP_Text texto;
-    void Start ()
+    private bool aux = false;
+    void Start()
     {
         texto = GetComponent<TMP_Text>();
-        texto.text = "H- Mutar a música";
+        texto.text = "";
     }
+
     void Update()
     {
-        if (Input.GetKey(KeyCode.H))
+        if (Input.GetKeyDown(KeyCode.H))
         {
-            texto.text = "H- Desmutar a música";
-        }
-        if(texto.text == "H- Desmutar a música" && Input.GetKey(KeyCode.H)){
-            texto.text = "H- Mutar a música";
+            aux = !aux;
+
+            if (aux)
+            {
+                texto.text = "H - Mutar a música";
+            }
+            else
+            {
+                texto.text = "H - Desmutar a música";
+            }
         }
     }
 }
