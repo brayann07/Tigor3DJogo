@@ -9,7 +9,11 @@ public class CameraSeguir : MonoBehaviour
 
     private Vector2 rotacaoAtual;
     private Vector3 posicaoAtualVelocidade;
-
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
     void LateUpdate() // a gente n usa update pq é a cada frame 
     {
         rotacaoAtual.x += Input.GetAxis("Mouse X") * sensibilidadedomouse;
