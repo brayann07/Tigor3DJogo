@@ -10,6 +10,7 @@ public class InimigoRPG : MonoBehaviour
     private Vector3 posicaooriginal;
     Vector3 direcao;
     public float Gravidade = 3f;
+    public Transform teleportPoint;
     void Start()
     {
         posicaooriginal = new Vector3(1031, 1, 164);

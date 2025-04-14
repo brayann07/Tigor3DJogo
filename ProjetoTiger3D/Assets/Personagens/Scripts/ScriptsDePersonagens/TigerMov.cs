@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -11,7 +12,7 @@ public class TigerMov : MonoBehaviour
     Vector3 MoveDirection;
     CharacterController controller;
     Animator anim;
-
+    public Transform teleportPoint;
 
     // Start is called before the first frame update
     void Start()
@@ -70,5 +71,4 @@ public class TigerMov : MonoBehaviour
         MoveDirection.y -= Gravity * Time.deltaTime;
         controller.Move(MoveDirection * Time.deltaTime);
     }
-
 }
