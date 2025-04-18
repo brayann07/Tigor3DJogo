@@ -1,8 +1,8 @@
 using UnityEngine;
 
-public class MagiaSaindo : MonoBehaviour
+public class MagiaPreta : MonoBehaviour
 {
-    public GameObject esferaVerde;
+    public GameObject esferaPreta;
     public Transform ondevaisairabola;
     private float bolaVelocidade = 10f;
     private float tempoDeVida = 2f;
@@ -14,7 +14,7 @@ public class MagiaSaindo : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.F))
+        if (Input.GetKeyDown(KeyCode.Mouse1))
         {
             anim.SetInteger("transitions", 3);
             JogarABola();
@@ -22,7 +22,7 @@ public class MagiaSaindo : MonoBehaviour
     }
     void JogarABola()
     {
-        GameObject fireball = Instantiate(esferaVerde, ondevaisairabola.position, ondevaisairabola.rotation);
+        GameObject fireball = Instantiate(esferaPreta, ondevaisairabola.position, ondevaisairabola.rotation);
         Rigidbody rb = fireball.GetComponent<Rigidbody>();
         if (rb != null)
         {
