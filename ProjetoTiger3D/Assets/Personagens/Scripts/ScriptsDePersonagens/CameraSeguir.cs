@@ -11,8 +11,7 @@ public class CameraSeguir : MonoBehaviour
     private Vector3 posicaoAtualVelocidade;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.visible = true;
     }
     void LateUpdate() // a gente n usa update pq é a cada frame 
     {

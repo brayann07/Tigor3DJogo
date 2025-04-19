@@ -7,11 +7,14 @@ public class MagiaSaindo : MonoBehaviour
     private float bolaVelocidade = 10f;
     private float tempoDeVida = 2f;
     private Animator anim;
+    private Camera mainCamera;
 
     void Start()
     {
         anim = GetComponent<Animator>();
+        mainCamera = Camera.main;
     }
+
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.F))
@@ -20,13 +23,31 @@ public class MagiaSaindo : MonoBehaviour
             JogarABola();
         }
     }
+
     void JogarABola()
     {
-        GameObject fireball = Instantiate(esferaVerde, ondevaisairabola.position, ondevaisairabola.rotation);
+        // Raycast do mouse para o mundo
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
+        RaycastHit hit;
+
+        Vector3 direcao;
+        if (Physics.Raycast(ray, out hit))
+        {
+            // Se acertar alguma coisa, mira nesse ponto
+            direcao = (hit.point - ondevaisairabola.position).normalized;
+        }
+        else
+        {
+            // Se n�o acertar nada, atira na dire��o da c�mera
+            direcao = ray.direction;
+        }
+
+        GameObject fireball = Instantiate(esferaVerde, ondevaisairabola.position, Quaternion.LookRotation(direcao));
         Rigidbody rb = fireball.GetComponent<Rigidbody>();
+
         if (rb != null)
         {
-            rb.linearVelocity = ondevaisairabola.forward * bolaVelocidade;
+            rb.linearVelocity = direcao * bolaVelocidade;
         }
 
         Destroy(fireball, tempoDeVida);
@@ -36,6 +57,7 @@ public class MagiaSaindo : MonoBehaviour
         {
             Destroy(particleSystem.gameObject, tempoDeVida);
         }
+
         Collider fireballCollider = fireball.GetComponent<Collider>();
         if (fireballCollider != null)
         {
