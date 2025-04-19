@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class VidaJogador : MonoBehaviour
 {
-    public Image[] coracoes;
+    public Image[] coracoes;  // Essa array aq a proposito serve pras imagens( poderia ter feito de um jeito mais facil)  
     private int contadorVida;
 
     void Start()
@@ -32,5 +32,6 @@ public class VidaJogador : MonoBehaviour
     void Morrer()
     {
         Destroy(gameObject);
+        //futuro transitions aq pra morrer
     }
 }
