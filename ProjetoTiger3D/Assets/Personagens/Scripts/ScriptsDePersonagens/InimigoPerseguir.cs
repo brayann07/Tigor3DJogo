@@ -20,8 +20,6 @@ public class InimigoPerseguir : MonoBehaviour
 
     void Update()
     {
-        tempoAtaqueAtual -= Time.deltaTime;
-
         float distancia = Vector3.Distance(transform.position, player.position);
         if (distancia < rangePerseguir)
         {
@@ -79,9 +77,11 @@ public class InimigoPerseguir : MonoBehaviour
         }
     }
 
-    void OnDrawGizmosSelected()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, rangePerseguir);
-    }
-}
+ }
+
+
+
+
+
+
+

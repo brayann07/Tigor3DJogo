@@ -6,8 +6,12 @@ public class DestruirInimigo : MonoBehaviour
     {
         if (other.CompareTag("Inimigo"))
         {
-            Destroy(other.gameObject); 
-            Destroy(gameObject);        
+            VidaInimigo1 vida = other.GetComponent<VidaInimigo1>();
+            if (vida != null)
+            {
+                vida.TomarDano(1);
+            }
+
         }
     }
 }
