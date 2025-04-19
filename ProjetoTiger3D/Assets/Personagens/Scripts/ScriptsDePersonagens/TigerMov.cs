@@ -12,7 +12,7 @@ public class TigerMov : MonoBehaviour
     Vector3 MoveDirection;
     CharacterController controller;
     Animator anim;
-    public Transform teleportPoint;
+
 
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,7 @@ public class TigerMov : MonoBehaviour
             
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
-                MoveDirection = Vector3.forward * (3.0f * Speed);
+                MoveDirection = Vector3.forward * (2.0f * Speed);
                 MoveDirection = transform.TransformDirection(MoveDirection);
                 anim.SetInteger("transitions", 2);
             }
@@ -63,6 +63,7 @@ public class TigerMov : MonoBehaviour
                 anim.SetInteger("transitions", 0);
               
             }
+           
         }
         Rotation += Input.GetAxis("Horizontal") * RotSpeed * Time.deltaTime;
         transform.eulerAngles = new Vector3(0, Rotation, 0);
