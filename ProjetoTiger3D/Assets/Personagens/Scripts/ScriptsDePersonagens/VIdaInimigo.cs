@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class VidaJogador : MonoBehaviour
+public class VidaInimigo1 : MonoBehaviour
 {
     public Image[] coracoes;  // Essa array aq a proposito serve pras imagens( poderia ter feito de um jeito mais facil)  
     private int contadorVida;

@@ -4,22 +4,31 @@ public class InimigoPerseguir : MonoBehaviour
 {
     Animator animator;
     public Transform player;
-    public float velocidade = 2f;
+    public float velocidade = 3f;
     public float RotSpeed = 5f;
-
+    public float rangePerseguir = 10f;
     public float tempoEntreAtaques = 1f;
-    private float tempoAtaqueAtual;
+    private float tempoAtaqueAtual = 0f;
+
+    private Vector3 posicaoOriginal;
 
     void Start()
     {
         animator = GetComponent<Animator>();
-        tempoAtaqueAtual = 0f;
+        posicaoOriginal = transform.position;
     }
 
     void Update()
     {
-        tempoAtaqueAtual -= Time.deltaTime;
-        Perseguir();
+        float distancia = Vector3.Distance(transform.position, player.position);
+        if (distancia < rangePerseguir)
+        {
+            Perseguir();
+        }
+        else
+        {
+            VoltarPosicaoOriginal();
+        }
     }
 
     void Perseguir()
@@ -32,7 +41,25 @@ public class InimigoPerseguir : MonoBehaviour
             Quaternion rot = Quaternion.LookRotation(direction);
             transform.rotation = Quaternion.Slerp(transform.rotation, rot, RotSpeed * Time.deltaTime);
             transform.position += transform.forward * velocidade * Time.deltaTime;
-            animator.SetInteger("transitions", 2);
+            animator.SetInteger("transitions", 2); 
+        }
+    }
+
+    void VoltarPosicaoOriginal()
+    {
+        Vector3 direction = posicaoOriginal - transform.position;
+        direction.y = 0;
+
+        if (direction.magnitude > 0.1f)
+        {
+            Quaternion rot = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rot, RotSpeed * Time.deltaTime);
+            transform.position += transform.forward * velocidade * Time.deltaTime;
+            animator.SetInteger("transitions", 2); // andando
+        }
+        else
+        {
+            animator.SetInteger("transitions", 1); // idle
         }
     }
 
@@ -49,4 +76,12 @@ public class InimigoPerseguir : MonoBehaviour
             }
         }
     }
-}
+
+ }
+
+
+
+
+
+
+
