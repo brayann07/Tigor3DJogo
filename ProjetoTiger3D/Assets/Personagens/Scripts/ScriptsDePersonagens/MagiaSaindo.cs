@@ -26,19 +26,19 @@ public class MagiaSaindo : MonoBehaviour
 
     void JogarABola()
     {
-        // Raycast do mouse para o mundo
+        
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
         Vector3 direcao;
         if (Physics.Raycast(ray, out hit))
         {
-            // Se acertar alguma coisa, mira nesse ponto
+            
             direcao = (hit.point - ondevaisairabola.position).normalized;
         }
         else
         {
-            // Se n�o acertar nada, atira na dire��o da c�mera
+       
             direcao = ray.direction;
         }
 

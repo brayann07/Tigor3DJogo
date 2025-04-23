@@ -5831,6 +5831,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: aea99a04bd1aace4a82537f491d6b352, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &462205763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1576488453971893466, guid: a778b631c6253a04899cb31bad047c81, type: 3}
+  m_PrefabInstance: {fileID: 1908011803}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &498526112
 GameObject:
   m_ObjectHideFlags: 0
@@ -6819,7 +6824,6 @@ GameObject:
   - component: {fileID: 980653523}
   - component: {fileID: 980653522}
   - component: {fileID: 980653521}
-  - component: {fileID: 980653520}
   m_Layer: 5
   m_Name: VIdaCanva
   m_TagString: Untagged
@@ -6827,19 +6831,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &980653520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 980653519}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 86c05a2a502ce584d9e47b7919108e82, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  canvas: {fileID: 0}
 --- !u!114 &980653521
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12777,6 +12768,7 @@ MonoBehaviour:
   pertoDaPlaca: 5
   jogador: {fileID: 881011464}
   canvasDialogo: {fileID: 66784388}
+  pedra: {fileID: 462205763}
   textoDialogo: {fileID: 1151963722}
   tigerfalando: {fileID: 53166106}
 --- !u!1 &2031255863
