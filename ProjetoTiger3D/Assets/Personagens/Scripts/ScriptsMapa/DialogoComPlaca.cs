@@ -11,6 +11,7 @@ public class DialogoComPlaca : MonoBehaviour
     public float pertoDaPlaca = 5f;
     public Transform jogador;
     public Canvas canvasDialogo;
+    public GameObject pedra;
     public TMP_Text textoDialogo;
 
     public AudioSource tigerfalando;
@@ -40,6 +41,7 @@ public class DialogoComPlaca : MonoBehaviour
         if (Input.GetKey(KeyCode.E))
         {
             AparecerUI();
+            Destroy(pedra);
         }
     }
     void AparecerUI()
