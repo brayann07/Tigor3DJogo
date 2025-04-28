@@ -6,9 +6,12 @@ public class CameraSeguir : MonoBehaviour
     public Vector3 offset = new Vector3(0, 5, -10);
     public float sensibilidadedomouse = 3f;
     public float suavilidade = 0.1f;
+    public float distanciaMaxima = 10f;
 
     private Vector2 rotacaoAtual;
     private Vector3 posicaoAtualVelocidade;
+
+    public string obstaculo = "Terrain";
     void Start()
     {
         Cursor.visible = true;
@@ -22,7 +25,16 @@ public class CameraSeguir : MonoBehaviour
         Quaternion rotacao = Quaternion.Euler(rotacaoAtual.y, rotacaoAtual.x, 0);
         Vector3 posicaoDesejada = target.position + rotacao * offset;
 
-        transform.position = Vector3.SmoothDamp(transform.position, posicaoDesejada, ref posicaoAtualVelocidade, suavilidade);
+        RaycastHit hit;
+        if (Physics.Raycast(target.position, posicaoDesejada - target.position, out hit, distanciaMaxima))
+        {
+            if (hit.collider.CompareTag(obstaculo))
+            {
+
+                posicaoDesejada = hit.point;
+            }
+        }
+            transform.position = Vector3.SmoothDamp(transform.position, posicaoDesejada, ref posicaoAtualVelocidade, suavilidade);
         transform.LookAt(target);
     }
 }
