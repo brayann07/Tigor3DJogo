@@ -15,7 +15,7 @@ public class ProjetilInimigo : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            PlayerHealth vidaPlayer = other.gameObject.GetComponent<PlayerHealth>();
+            VidaPlayer vidaPlayer = other.gameObject.GetComponent<VidaPlayer>();
             if (vidaPlayer != null)
             {
                 vidaPlayer.TomeDano(1);

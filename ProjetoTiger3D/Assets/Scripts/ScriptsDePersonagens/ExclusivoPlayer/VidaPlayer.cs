@@ -1,29 +1,29 @@
-using TMPro;
+using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour
+public class VidaPlayer : MonoBehaviour
 {
     public float health = 3;
-    public TMP_Text vida;
+    public List<Image> imagens;
     void Start()
     {
-        vida.text = "3";
     }
     public void TomeDano(float damage)
     {
-        health -= damage;
-        
-        if(health == 3){
-            vida.text = "3";
-        }else if(health == 2){
-            vida.text = "2";
-        }else if(health == 1){
-            vida.text = "1";
-        }
+        health -= damage;   
+        AtualizarUI();
         if (health <= 0)
         {
             Debug.Log("tiger ta morto");
             Destroy(gameObject);
         }
+    }
+    public void AtualizarUI(){
+        for (int i = 0; i < imagens.Count; i++)
+        {
+            imagens[i].enabled = i < health;
+        }
+
     }
 }

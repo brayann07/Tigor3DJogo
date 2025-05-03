@@ -42,6 +42,7 @@ public class VidaInimigo : MonoBehaviour
          if (explosaoParticulas != null)
         {
             explosaoAudio.Play(); // som tocou!
+           /*  Destroy(explosaoParticulas,3f); // unity nao deixa eu deleta isso KKKKKKKKK */
             Instantiate(explosaoParticulas, transform.position, Quaternion.identity); // so pra explodir no transform do inimigo msm 
         }
         Destroy(gameObject);

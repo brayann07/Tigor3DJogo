@@ -25,5 +25,6 @@ public class MagoIA : MonoBehaviour
 
         ProjetilInimigo scriptdeMagia = magia.GetComponent<ProjetilInimigo>();
         scriptdeMagia.direction = (alvo.position - transform.position).normalized;
+        Destroy(magia,1f);
     }
 }
