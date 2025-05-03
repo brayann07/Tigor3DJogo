@@ -10,6 +10,7 @@ public class InventarioPlayer : MonoBehaviour{
     public TMP_Text qtdMuda;
     public int qntPizzaInt = 0;
     public int qntMudaInt = 0;
+    public Button comerapizza;
     private int aux = 0;
     void Start()
     {
@@ -31,6 +32,14 @@ public class InventarioPlayer : MonoBehaviour{
         else if (Input.GetKeyDown(KeyCode.B) && aux == 1){
             inventarioPanel.gameObject.SetActive(false);
             aux--;
+        }
+    }
+    public void Comer(){
+        VidaPlayer vidaPlayer = gameObject.GetComponent<VidaPlayer>();
+        if(qntPizzaInt > 0 && vidaPlayer.health != 3){
+            qntPizzaInt--;
+            AtualizarUI();
+            vidaPlayer.RecupereVida(1);
         }
     }
 }

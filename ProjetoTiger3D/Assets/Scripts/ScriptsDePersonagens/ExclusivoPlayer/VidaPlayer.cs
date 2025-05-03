@@ -19,6 +19,14 @@ public class VidaPlayer : MonoBehaviour
             Destroy(gameObject);
         }
     }
+    public void RecupereVida(float recuperar){
+        health += recuperar;   
+        AtualizarUI();
+        if (health >=1)
+        {
+            Debug.Log("tiger ta vivasso e recuperou vida");
+        }
+    }
     public void AtualizarUI(){
         for (int i = 0; i < imagens.Count; i++)
         {

@@ -35,11 +35,13 @@ public class DialogoInicioDoJogo : MonoBehaviour
             spriteTigerNormal.gameObject.SetActive(true);
             faladoTiger.gameObject.SetActive(true);
         }
-            faladoTiger.text = "Tiger\nDesde de quando a floresta é assim escura...";
+            faladoTiger.text = "Tigor:\nDesde de quando a floresta é assim escura...";
+            tigerFalando.Play();
             StartCoroutine(Cooldown());
     }
       private IEnumerator Cooldown(){
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(3);
+        tigerFalando.Stop();
         balaodoTiger.gameObject.SetActive(false);
         spriteTigerNormal.gameObject.SetActive(false);
         faladoTiger.gameObject.SetActive(false);
