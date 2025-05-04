@@ -25,6 +25,7 @@ public class DialogoEntreTio : MonoBehaviour
     public AudioSource tigerFalando;
     public AudioSource tioFalando;
     public AudioSource TP;
+    public AudioSource zap;
 
     bool dialogoAtivo = false;
 
@@ -76,7 +77,7 @@ public class DialogoEntreTio : MonoBehaviour
             case 2:
                 BalaoChat.gameObject.SetActive(false);
                 dialogoText.gameObject.SetActive(false);
-
+                zap.Play();
                 BalaoChatTio.gameObject.SetActive(true);
                 dialogoTextTio.gameObject.SetActive(true);
                 dialogoTextTio.text = "*Celular toca*";
