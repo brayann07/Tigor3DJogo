@@ -35,7 +35,7 @@ public class DialogoInicioDoJogo : MonoBehaviour
             spriteTigerNormal.gameObject.SetActive(true);
             faladoTiger.gameObject.SetActive(true);
         }
-            faladoTiger.text = "Tigor:\nDesde de quando a floresta é assim escura...";
+            faladoTiger.text = "Tigor:\nDesde de quando eles tem poder de teleportar assim...";
             tigerFalando.Play();
             StartCoroutine(Cooldown());
     }
