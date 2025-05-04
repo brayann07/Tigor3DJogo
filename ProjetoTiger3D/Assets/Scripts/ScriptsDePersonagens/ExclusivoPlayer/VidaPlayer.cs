@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-
+using UnityEngine.SceneManagement;
 public class VidaPlayer : MonoBehaviour
 {
     public float health = 3;
@@ -16,7 +16,8 @@ public class VidaPlayer : MonoBehaviour
         if (health <= 0)
         {
             Debug.Log("tiger ta morto");
-            Destroy(gameObject);
+            // Destroy(gameObject); comentei pq da um erro sem sentido mas ok
+            TigorMortinho();
         }
     }
     public void RecupereVida(float recuperar){
@@ -33,5 +34,8 @@ public class VidaPlayer : MonoBehaviour
             imagens[i].enabled = i < health;
         }
 
+    }
+    void TigorMortinho(){
+        SceneManager.LoadScene(2);
     }
 }

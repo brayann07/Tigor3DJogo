@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -49,5 +50,10 @@ public class VidaInimigo : MonoBehaviour
         Instantiate(muda, transform.position, Quaternion.identity);
         Destroy(gameObject);
         //futuro transitions aq pra morrer
+    }
+
+    internal void TomarDano(PlayerNivel playerNivel)
+    {
+        throw new NotImplementedException();
     }
 }

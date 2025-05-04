@@ -11,6 +11,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/CenaPrincipalComps/CenaJogoPrincipal.unity
     guid: 3882a01d3c8a0d64aa7de53d8d8e76e8
+  - enabled: 1
+    path: Assets/Scenes/MorrerCena/AoMorrer.unity
+    guid: 74a9f1291bd45f9429b1391a39993f6d
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 289c1b55c9541489481df5cc06664110, type: 3}
   m_UseUCBPForAssetBundles: 0

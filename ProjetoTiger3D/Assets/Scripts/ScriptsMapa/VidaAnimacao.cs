@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class VidaAnimacao : MonoBehaviour
 {
-    public float velocidade = 3f;
+    public float velocidade = 5f;
 
     private Vector3 rotacaoDireita;
     private Vector3 rotacaoAtual;
@@ -11,8 +11,8 @@ public class VidaAnimacao : MonoBehaviour
     void Start()
     {
         rotacaoAtual = transform.localEulerAngles;
-        rotacaoDireita = rotacaoAtual + new Vector3(0, 0, 10);
-        rotacaoEsquerda = rotacaoAtual + new Vector3(0, 0, -10);
+        rotacaoDireita = rotacaoAtual + new Vector3(0, 0, 15);
+        rotacaoEsquerda = rotacaoAtual + new Vector3(0, 0, -15);
     }
 
     void Update()

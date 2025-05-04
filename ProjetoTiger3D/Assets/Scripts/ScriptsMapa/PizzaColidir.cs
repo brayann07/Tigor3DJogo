@@ -10,6 +10,7 @@ public class PizzaColidir : MonoBehaviour
     public Image spriteFeliz;
     public TMP_Text falaTiger;
     public AudioSource tigerfalandoaq;
+    public GameObject pizza;
     
     void OnTriggerEnter(Collider other)
     {
@@ -41,6 +42,7 @@ public class PizzaColidir : MonoBehaviour
         }
     }
      private IEnumerator CooldownDeDialogo(){
+        pizza.GetComponent<Collider>().isTrigger = false;
         yield return new WaitForSeconds(3);
         tigerfalandoaq.Stop();
         balaoTiger.gameObject.SetActive(false);

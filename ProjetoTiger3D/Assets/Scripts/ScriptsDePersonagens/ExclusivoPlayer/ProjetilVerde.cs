@@ -4,6 +4,7 @@ using UnityEngine;
 public class ProjetilVerde : MonoBehaviour
 {
     public float speed = 10f;
+     public PlayerNivel playerNivel;
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -16,7 +17,7 @@ public class ProjetilVerde : MonoBehaviour
         {
             if(scriptdeVidadoInimigo != null){
                 Debug.Log("atingi o mago preto");
-                scriptdeVidadoInimigo.TomarDano(1);
+                scriptdeVidadoInimigo.TomarDano(playerNivel.numNivel);
             }
             Destroy(gameObject);
         }
@@ -24,7 +25,7 @@ public class ProjetilVerde : MonoBehaviour
         if (other.CompareTag("Inimigo"))
         {
             if(scriptdeVidadoInimigo != null){
-                scriptdeVidadoInimigo.TomarDano(1);
+                scriptdeVidadoInimigo.TomarDano(playerNivel.numNivel);
             }
             Destroy(gameObject);
         }
