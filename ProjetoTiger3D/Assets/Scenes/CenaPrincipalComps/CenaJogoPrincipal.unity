@@ -1036,6 +1036,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd8186229112f72498f2e900ec365ac1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  balaoTiger: {fileID: 62402098}
+  tigerFeliz: {fileID: 1978837617}
+  textoDialogo: {fileID: 1517343075}
+  tigerfalando: {fileID: 1569849815}
+  muda: {fileID: 446371408}
 --- !u!135 &446371412
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -6272,7 +6277,7 @@ MonoBehaviour:
   - {fileID: 1840200545}
   - {fileID: 1882290202}
   - {fileID: 1113328886}
-  muda: {fileID: 0}
+  muda: {fileID: 446371408}
   explosaoParticulas: {fileID: 417761080263594737, guid: 7800b8f6b712bfe49bd663eeb3ebe1e4, type: 3}
   explosaoAudio: {fileID: 1265664811}
 --- !u!135 &509885325
@@ -6730,6 +6735,7 @@ GameObject:
   - component: {fileID: 933230126}
   - component: {fileID: 933230125}
   - component: {fileID: 933230129}
+  - component: {fileID: 933230130}
   m_Layer: 0
   m_Name: InimigoTeste
   m_TagString: Inimigo
@@ -6752,7 +6758,7 @@ SphereCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -6850,6 +6856,33 @@ MonoBehaviour:
   muda: {fileID: 446371408}
   explosaoParticulas: {fileID: 417761080263594737, guid: 7800b8f6b712bfe49bd663eeb3ebe1e4, type: 3}
   explosaoAudio: {fileID: 1265664811}
+--- !u!54 &933230130
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 933230124}
+  serializedVersion: 4
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_CenterOfMass: {x: 0, y: 0, z: 0}
+  m_InertiaTensor: {x: 1, y: 1, z: 1}
+  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ImplicitCom: 1
+  m_ImplicitTensor: 1
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &980725735
 GameObject:
   m_ObjectHideFlags: 0
@@ -7766,6 +7799,72 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
+--- !u!1 &1294680706
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1294680707}
+  - component: {fileID: 1294680708}
+  - component: {fileID: 1294680709}
+  m_Layer: 0
+  m_Name: HitboxSoco
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1294680707
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294680706}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.451, z: 0.776}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1368858467}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &1294680708
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294680706}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1.2178522}
+  m_Center: {x: -3.9121817e-10, y: 0, z: 0.10892587}
+--- !u!114 &1294680709
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1294680706}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3a87dd1dce7de94eac79b8031ad8b6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1337372153
 GameObject:
   m_ObjectHideFlags: 0
@@ -8023,6 +8122,19 @@ MonoBehaviour:
   qntPizzaInt: 0
   qntMudaInt: 0
   comerapizza: {fileID: 165638828}
+--- !u!114 &1368858471
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368858464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 74192e2b8023ccf43889695f7d285789, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitboxsoco: {fileID: 1294680706}
 --- !u!1 &1376112161
 GameObject:
   m_ObjectHideFlags: 0
@@ -13667,6 +13779,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8c9ec710521b64f4e91b8cd72fea7fb9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1569849816}
+    - targetCorrespondingSourceObject: {fileID: -8679921383154817045, guid: 8c9ec710521b64f4e91b8cd72fea7fb9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1294680707}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8c9ec710521b64f4e91b8cd72fea7fb9, type: 3}
       insertIndex: -1
@@ -13683,6 +13798,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8c9ec710521b64f4e91b8cd72fea7fb9, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1368858470}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 8c9ec710521b64f4e91b8cd72fea7fb9, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1368858471}
   m_SourcePrefab: {fileID: 100100000, guid: 8c9ec710521b64f4e91b8cd72fea7fb9, type: 3}
 --- !u!1 &1679576085
 GameObject:

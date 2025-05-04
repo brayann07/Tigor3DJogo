@@ -12,6 +12,7 @@ public class DialogoEntreTio : MonoBehaviour
     public GameObject tigerLevantado;
     public GameObject tioLevantado;
     public GameObject tioDeCostas;
+    public GameObject whey;
 
     // ali em cima ta os sprites da cena
     public TMP_Text dialogoText;
@@ -37,6 +38,7 @@ public class DialogoEntreTio : MonoBehaviour
         dialogoTextTio.text = "";
         BalaoChat.gameObject.SetActive(false);
         BalaoChatTio.gameObject.SetActive(false);
+        whey.gameObject.SetActive(false);
     }
 
     void Update()
@@ -89,6 +91,7 @@ public class DialogoEntreTio : MonoBehaviour
                 dialogoTextTio.text = "Tio do Tigor:\nCalma aí";
                 tioLevantado.SetActive(false);
                 tioDeCostas.SetActive(true);
+                whey.gameObject.SetActive(true);
                 break;
             case 4:
                 BalaoChatTio.gameObject.SetActive(true);
@@ -101,8 +104,10 @@ public class DialogoEntreTio : MonoBehaviour
                 dialogoTextTio.gameObject.SetActive(true);
                 tioLevantado.SetActive(true);
                 tioDeCostas.SetActive(false);
+                whey.gameObject.SetActive(false);
                 StartCoroutine(CooldownTio());
                 dialogoTextTio.text = "Tio do Tigor:\nSeguinte, se vai ter que salvar Crossing Woods, pq o tio ta ocupado";
+                
                 break;
             case 6:
                 BalaoChatTio.gameObject.SetActive(true);
