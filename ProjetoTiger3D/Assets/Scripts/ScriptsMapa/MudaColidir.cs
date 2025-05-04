@@ -10,6 +10,7 @@ public class MudaColidir : MonoBehaviour
     public TMP_Text textoDialogo;
     public AudioSource tigerfalando;
     public GameObject muda;
+    public PlayerNivel playernivel;
     void OnTriggerEnter(Collider other)
     {
        InventarioPlayer inventario = FindFirstObjectByType<InventarioPlayer>();
@@ -32,6 +33,8 @@ public class MudaColidir : MonoBehaviour
             StartCoroutine(Cooldown());
             Debug.Log("pego a muda");
             inventario.qntMudaInt += 1;
+            playernivel.numNivel += 1;
+            playernivel.AtualizarNivel();
             inventario.AtualizarUI();
         }
     }

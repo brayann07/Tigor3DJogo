@@ -1,9 +1,11 @@
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 
 public class Projetil : MonoBehaviour
 {
     public float speed = 10f;
+    public PlayerNivel playerNivel;
     void Update()
     {
         transform.Translate(Vector3.forward * speed * Time.deltaTime);
@@ -14,8 +16,9 @@ public class Projetil : MonoBehaviour
         VidaInimigo scriptdeVidadoInimigo = other.GetComponent<VidaInimigo>();
         if (other.CompareTag("Inimigo"))
         {
+
             if(scriptdeVidadoInimigo != null){
-                scriptdeVidadoInimigo.TomarDano(1);
+                scriptdeVidadoInimigo.TomarDano(playerNivel.numNivel);
             }
             Destroy(gameObject);
         }
@@ -23,7 +26,7 @@ public class Projetil : MonoBehaviour
          if (other.CompareTag("InimigoVerde"))
         {
             if(scriptdeVidadoInimigo != null){
-                scriptdeVidadoInimigo.TomarDano(1);
+                scriptdeVidadoInimigo.TomarDano(playerNivel.numNivel);
             }
             Destroy(gameObject);
         }

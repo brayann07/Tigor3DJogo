@@ -26,7 +26,6 @@ public class PizzaColidir : MonoBehaviour
             inventario.qntPizzaInt += 1;
             inventario.AtualizarUI();
             falaTiger.text = "Tigor:\nEba, uma pizza pra depois";
-            pizza.GetComponent<Collider>().isTrigger = false;
             StartCoroutine(CooldownDeDialogo());
         }
         else if (other.CompareTag("Player") && aux == 1)
@@ -39,11 +38,11 @@ public class PizzaColidir : MonoBehaviour
             inventario.qntPizzaInt += 1;
             inventario.AtualizarUI();
             falaTiger.text = "Tigor:\nTomará que tenha mais algumas por aí...";
-            pizza.GetComponent<Collider>().isTrigger = false;
             StartCoroutine(CooldownDeDialogo());
         }
     }
      private IEnumerator CooldownDeDialogo(){
+        pizza.GetComponent<Collider>().isTrigger = false;
         yield return new WaitForSeconds(3);
         tigerfalandoaq.Stop();
         balaoTiger.gameObject.SetActive(false);
