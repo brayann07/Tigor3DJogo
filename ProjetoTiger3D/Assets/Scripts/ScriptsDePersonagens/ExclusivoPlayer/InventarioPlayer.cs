@@ -25,7 +25,7 @@ public class InventarioPlayer : MonoBehaviour{
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.B) && aux == 0){
+        if (Input.GetKeyDown(KeyCode.E) && aux == 0){
             inventarioPanel.gameObject.SetActive(true);
             aux++;
         }

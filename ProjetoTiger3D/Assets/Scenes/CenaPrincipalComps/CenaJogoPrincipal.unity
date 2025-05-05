@@ -7285,7 +7285,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 1368858467}
   offset: {x: 0, y: 3, z: -6}
-  followSpeed: 100
+  followSpeed: 50
+  mouseSensitivity: 20
   tagColisao: Terrain
 --- !u!1 &1113328885
 GameObject:
