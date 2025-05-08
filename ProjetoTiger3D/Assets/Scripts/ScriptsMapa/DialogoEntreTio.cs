@@ -88,7 +88,7 @@ public class DialogoEntreTio : MonoBehaviour
                 BalaoChatTio.gameObject.SetActive(true);
                 dialogoTextTio.gameObject.SetActive(true);
                 StartCoroutine(CooldownTio());
-                dialogoTextTio.text = "Tio do Tigor:\nCalma aí";
+                dialogoTextTio.text = "Tio do Tigor:\nCalma aí, de novo?";
                 tioLevantado.SetActive(false);
                 tioDeCostas.SetActive(true);
                 whey.gameObject.SetActive(true);
@@ -97,7 +97,7 @@ public class DialogoEntreTio : MonoBehaviour
                 BalaoChatTio.gameObject.SetActive(true);
                 dialogoTextTio.gameObject.SetActive(true);
                 StartCoroutine(CooldownTio());
-                dialogoTextTio.text = "Tio do Tigor:\nUhum, tá";
+                dialogoTextTio.text = "Tio do Tigor:\nUhum, tá, beleza, vou te enviar alguém de confiança";
                 break;
             case 5:
                 BalaoChatTio.gameObject.SetActive(true);
@@ -106,7 +106,7 @@ public class DialogoEntreTio : MonoBehaviour
                 tioDeCostas.SetActive(false);
                 whey.gameObject.SetActive(false);
                 StartCoroutine(CooldownTio());
-                dialogoTextTio.text = "Tio do Tigor:\nSeguinte, se vai ter que salvar Crossing Woods, pq o tio ta ocupado";
+                dialogoTextTio.text = "Tio do Tigor:\nSeguinte, cê vai ter que salvar Crossing Woods sozinho, porque o tio tá ocupado";
                 
                 break;
             case 6:
@@ -125,7 +125,7 @@ public class DialogoEntreTio : MonoBehaviour
                 StartCoroutine(CooldownTiger());
                 tigerSentado.SetActive(false);
                 tigerLevantado.SetActive(true);
-                dialogoText.text = "Tigor:\nQuê?? Pera aí!";
+                dialogoText.text = "Tigor:\nQuê?? Como?? Pera aí!";
                 break;
             case 8:
                 TP.Play();
