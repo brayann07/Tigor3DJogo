@@ -1,6 +1,5 @@
 // using Unity.VisualScripting;
 // using UnityEngine;
-
 // public class BossIA : MonoBehaviour
 // {
 //     public GameObject player;
@@ -8,12 +7,6 @@
 //     public int auxMudas = 0;
 //     private float speed = 5f;
 //     private bool atqAtivo = false;
-//     void Start()
-//     {
-
-//     }
-
-
 //     void Update()
 //     {
 //         float distancia = Vector3.Distance(transform.position, player.transform.position);
@@ -22,13 +15,9 @@
 //             seguirJogador();
 //         }
 //     }
-//     void valorAleatorio(aleatorio)
+//     void valorAleatorio()
 //     {
-//         if (aleatorio == 1)
-//         {
 
-//         }
-//         if()
 //     }
 //     void seguirJogador()
 //     {
@@ -41,12 +30,13 @@
 //             if (atqAtivo == true)
 //             {
 //                 speed = 0f;
+                
 //             }   
 //         }
 //     }
 //     void AtacarFisico()
 //     {
-
+//         atqAtivo = false;
 //     }
 //     void AtacarMagiaPreta()
 //     {

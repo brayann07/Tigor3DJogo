@@ -5,7 +5,7 @@ public class PlayerAndar : MonoBehaviour
     public float RotSpeed = 250f;
     private float Rotation;
     public float Gravity = 5f;
-
+    private float verticalVelocity;
     Vector3 MoveDirection;
     CharacterController controller;
     Animator anim;
@@ -19,33 +19,141 @@ public class PlayerAndar : MonoBehaviour
     void Update()
     {
         Move();
+        if (controller.isGrounded && verticalVelocity < 0)
+        {
+            verticalVelocity = -2f; 
+        }
     }
 
-    void Move()
+    public void Move()
     {
-        if (controller.isGrounded)
-        {
+        // ----------- MOVIMENTAÇÃO ----------------
+        float moveX = Input.GetAxis("Horizontal"); 
+        float moveZ = Input.GetAxis("Vertical");   
 
-            if (Input.GetKey(KeyCode.W))
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+        if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.LeftShift))
             {
-                MoveDirection = Vector3.forward * Speed;
-                MoveDirection = transform.TransformDirection(MoveDirection);
-                anim.SetInteger("transitions", 1);
+                move = Vector3.zero;
+                anim.SetInteger("transitions", 0); 
             }
-            if (Input.GetKey(KeyCode.S))
+            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S)) 
             {
-                MoveDirection = Vector3.back * Speed;
-                MoveDirection = transform.TransformDirection(MoveDirection);
-                anim.SetInteger("transitions", 1);
+                move = Vector3.zero;
+                anim.SetInteger("transitions", 0);
+              
             }
-            
-            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
-            {
-                MoveDirection = Vector3.forward * (2.0f * Speed);
-                MoveDirection = transform.TransformDirection(MoveDirection);
-                anim.SetInteger("transitions", 2);
-            }
-            if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.LeftShift))
+        // ----------- ANIMAÇÃO DE WALK/IDLE -------------
+        // Se estiver se movendo, ativa a animação de corrida (trigger bool)
+        if (move != Vector3.zero && controller.isGrounded)
+        {
+            controller.Move(Speed * Time.deltaTime * move); // Aplica movimentação
+            anim.SetInteger("transitions", 1);
+        }
+        else
+        {
+            anim.SetInteger("transitions", 0);
+        }
+
+    }
+}
+/* 
+using UnityEngine;
+
+public class PlayerNovo : MonoBehaviour
+{
+    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    // Referência ao CharacterController da Unity
+    private CharacterController controller;
+
+    // Velocidade de movimento
+    public float speed = 5f;
+
+    // Força do pulo
+    public float jumpForce = 8f;
+
+    // Gravidade aplicada ao personagem
+    public float gravity = -9.81f;
+
+    // Velocidade vertical (queda, pulo, etc.)
+    private float verticalVelocity;
+
+    // Referência ao Animator (para animações)
+    private Animator anim;
+
+    // Referência à câmera (para rotação com o mouse)
+    public Transform cameraTransform;
+
+    // Sensibilidade do mouse
+    public float mouseSensitivity = 2f;
+
+    // Acumulador para rotação vertical (câmera)
+    private float xRotation = 0f;
+
+    // Para controlar ataque (gatilho da animação)
+    private bool isAttacking = false;
+
+    void Start()
+    {
+        // Pegando os componentes necessários na cena
+        controller = GetComponent<CharacterController>();
+        anim = GetComponent<Animator>();
+
+        // Bloqueia e esconde o cursor no centro da tela
+        Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    void Update()
+    {
+
+        Move();
+        // ----------- PULO ---------------------
+        if (controller.isGrounded && verticalVelocity < 0)
+        {
+            verticalVelocity = -2f; // "cola" no chão
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && controller.isGrounded)
+        {
+            verticalVelocity = jumpForce;
+
+            // Ativa animação de pulo (trigger)
+            anim.SetTrigger("jump");
+        }
+
+        // Aplica gravidade
+        verticalVelocity += gravity * Time.deltaTime;
+        Vector3 verticalMove = Vector3.up * verticalVelocity;
+        controller.Move(verticalMove * Time.deltaTime);
+
+        // ----------- ATAQUE ----------------------
+        if (Input.GetButtonDown("Fire1") && !isAttacking)
+        {
+            isAttacking = true;
+            anim.SetTrigger("attack"); // Ativa animação de ataque (trigger)
+        }
+
+        // ----------- ROTACIONA O PLAYER COM O MOUSE (CÂMERA) ----------------
+        float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity;
+        float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity;
+
+        // Roda o player horizontalmente
+        transform.Rotate(Vector3.up * mouseX);
+
+        // Roda a câmera verticalmente (limitada para não girar demais)
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -80f, 80f);
+        cameraTransform.localRotation = Quaternion.Euler(xRotation, 0f, 0f);
+    }
+
+    public void Move()
+    {
+        // ----------- MOVIMENTAÇÃO ----------------
+        float moveX = Input.GetAxis("Horizontal"); // A/D
+        float moveZ = Input.GetAxis("Vertical");   // W/S
+
+        Vector3 move = transform.right * moveX + transform.forward * moveZ;
+           if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.LeftShift))
             {
                 MoveDirection = Vector3.zero;
                 anim.SetInteger("transitions", 0);
@@ -57,13 +165,23 @@ public class PlayerAndar : MonoBehaviour
                 anim.SetInteger("transitions", 0);
               
             }
-           
+        // ----------- ANIMAÇÃO DE WALK/IDLE -------------
+        // Se estiver se movendo, ativa a animação de corrida (trigger bool)
+        if (move != Vector3.zero && controller.isGrounded)
+        {
+            controller.Move(speed * Time.deltaTime * move); // Aplica movimentação
+            anim.SetBool("isWalking", true);
         }
-        Rotation += Input.GetAxis("Horizontal") * RotSpeed * Time.deltaTime;
-        transform.eulerAngles = new Vector3(0, Rotation, 0);
-       
+        else
+        {
+            anim.SetBool("isWalking", false);
+        }
 
-        MoveDirection.y -= Gravity * Time.deltaTime;
-        controller.Move(MoveDirection * Time.deltaTime);
     }
-}
+
+
+    // Chamado pela animação no fim do ataque para desbloquear
+    public void EndAttack()
+    {
+        isAttacking = false;
+    } */
