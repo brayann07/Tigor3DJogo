@@ -29,7 +29,7 @@ public class InventarioPlayer : MonoBehaviour{
             inventarioPanel.gameObject.SetActive(true);
             aux++;
         }
-        else if (Input.GetKeyDown(KeyCode.B) && aux == 1){
+        else if (Input.GetKeyDown(KeyCode.E) && aux == 1){
             inventarioPanel.gameObject.SetActive(false);
             aux--;
         }
