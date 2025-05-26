@@ -25,36 +25,49 @@ public class PlayerAndar : MonoBehaviour
         }
     }
 
-    public void Move()
+     void Move()
     {
-        // ----------- MOVIMENTAÇÃO ----------------
-        float moveX = Input.GetAxis("Horizontal"); 
-        float moveZ = Input.GetAxis("Vertical");   
-
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.LeftShift))
+        if (controller.isGrounded)
+        {
+            if (Input.GetKey(KeyCode.W))
             {
-                move = Vector3.zero;
-                anim.SetInteger("transitions", 0); 
+                MoveDirection = Vector3.forward * Speed;
+                MoveDirection = transform.TransformDirection(MoveDirection);
+                anim.SetInteger("transitions", 1);
             }
-            if (Input.GetKeyUp(KeyCode.W) || Input.GetKeyUp(KeyCode.S)) 
+         
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
-                move = Vector3.zero;
+                MoveDirection = Vector3.forward * (3.0f * Speed);
+                MoveDirection = transform.TransformDirection(MoveDirection);
+                anim.SetInteger("transitions", 2);
+            }
+            if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.LeftShift))
+            {
+                MoveDirection = Vector3.zero;
+                anim.SetInteger("transitions", 0);
+                
+            }
+            if (Input.GetKeyUp(KeyCode.W))
+            {
+                MoveDirection = Vector3.zero;
                 anim.SetInteger("transitions", 0);
               
             }
-        // ----------- ANIMAÇÃO DE WALK/IDLE -------------
-        // Se estiver se movendo, ativa a animação de corrida (trigger bool)
-        if (move != Vector3.zero && controller.isGrounded)
+        }
+        Rotation += Input.GetAxis("Horizontal") * RotSpeed * Time.deltaTime;
+        transform.eulerAngles = new Vector3(0, Rotation, 0);
+        if(Rotation > 0)
         {
-            controller.Move(Speed * Time.deltaTime * move); // Aplica movimentação
             anim.SetInteger("transitions", 1);
         }
-        else
+        if(Rotation < 0)
         {
             anim.SetInteger("transitions", 0);
         }
 
+        MoveDirection.y -= Gravity * Time.deltaTime;
+        controller.Move(MoveDirection * Time.deltaTime);
     }
 }
 /* 
