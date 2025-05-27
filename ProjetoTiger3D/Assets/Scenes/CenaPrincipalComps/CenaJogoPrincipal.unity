@@ -8186,7 +8186,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f91257b72c0ea40489cd2d56dbe02167, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1368858467}
+  target: {fileID: 1743499708}
   distance: 6
   height: 3
   mouseSensitivity: 10
@@ -9194,75 +9194,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1341185793}
   m_CullTransparentMesh: 1
---- !u!1001 &1365987423
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.2
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 54.55578
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.0000010728836
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 90.81295
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: -8679921383154817045, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 919132149155446097, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
-      propertyPath: m_Name
-      value: tigor idle (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: d1fb6085737212342aa6bbb83dcf0b64, type: 3}
 --- !u!1 &1368858464 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 8c9ec710521b64f4e91b8cd72fea7fb9, type: 3}
@@ -9402,7 +9333,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368858464}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2e6dffddbf571a44483a96138b70a7c8, type: 3}
   m_Name: 
@@ -14576,7 +14507,6 @@ GameObject:
   - component: {fileID: 1531709057}
   - component: {fileID: 1531709056}
   - component: {fileID: 1531709055}
-  - component: {fileID: 1531709054}
   m_Layer: 0
   m_Name: Boss
   m_TagString: Untagged
@@ -14584,18 +14514,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1531709054
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1531709053}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 730a2f2665bce57419a96f4e54f5e640, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1531709055
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20260,7 +20178,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: a1f4354c0726899449a77d0d7bb74b2c, type: 3}
       propertyPath: m_Name
-      value: Happy Idle
+      value: Tigor
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -20269,6 +20187,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1f4354c0726899449a77d0d7bb74b2c, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1743499705}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1f4354c0726899449a77d0d7bb74b2c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1743499707}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: a1f4354c0726899449a77d0d7bb74b2c, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1743499706}
   m_SourcePrefab: {fileID: 100100000, guid: a1f4354c0726899449a77d0d7bb74b2c, type: 3}
 --- !u!1 &1743499704 stripped
 GameObject:
@@ -20285,7 +20209,7 @@ Animator:
   m_GameObject: {fileID: 1743499704}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 6e3743b2a4d0012449ba03035ccb1a02, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -20297,6 +20221,51 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!143 &1743499706
+CharacterController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743499704}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Height: 10
+  m_Radius: 2
+  m_SlopeLimit: 45
+  m_StepOffset: 0.3
+  m_SkinWidth: 0.08
+  m_MinMoveDistance: 0.001
+  m_Center: {x: 0, y: 4.78, z: 0}
+--- !u!114 &1743499707
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743499704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2e6dffddbf571a44483a96138b70a7c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Speed: 5
+  RotSpeed: 250
+  Gravity: 5
+--- !u!4 &1743499708 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: a1f4354c0726899449a77d0d7bb74b2c, type: 3}
+  m_PrefabInstance: {fileID: 1743499703}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1753805105
 GameObject:
   m_ObjectHideFlags: 0
@@ -27363,3 +27332,4 @@ SceneRoots:
   - {fileID: 559253949}
   - {fileID: 2017643031}
   - {fileID: 1743499703}
+  - {fileID: 1531709058}

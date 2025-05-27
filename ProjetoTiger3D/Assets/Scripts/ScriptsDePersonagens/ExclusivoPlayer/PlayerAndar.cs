@@ -33,37 +33,47 @@ public class PlayerAndar : MonoBehaviour
             {
                 MoveDirection = Vector3.forward * Speed;
                 MoveDirection = transform.TransformDirection(MoveDirection);
-                anim.SetInteger("transitions", 1);
+                anim.SetBool("isWalking", true);
+                anim.SetBool("IsIdle", false);
+                anim.SetBool("IsRunning", false);
             }
          
             if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
                 MoveDirection = Vector3.forward * (3.0f * Speed);
                 MoveDirection = transform.TransformDirection(MoveDirection);
-                anim.SetInteger("transitions", 2);
+                anim.SetBool("IsRunning", true);
+                anim.SetBool("IsIdle", false);
+                anim.SetBool("isWalking", false);
             }
             if (Input.GetKeyUp(KeyCode.W) && Input.GetKeyUp(KeyCode.LeftShift))
             {
                 MoveDirection = Vector3.zero;
-                anim.SetInteger("transitions", 0);
-                
+                anim.SetBool("IsIdle", true);
+                anim.SetBool("isWalking", false);
+                anim.SetBool("IsRunning", false);
             }
             if (Input.GetKeyUp(KeyCode.W))
             {
                 MoveDirection = Vector3.zero;
-                anim.SetInteger("transitions", 0);
-              
+                anim.SetBool("IsIdle", true);
+                anim.SetBool("isWalking", false);
+                anim.SetBool("IsRunning", false);
             }
         }
         Rotation += Input.GetAxis("Horizontal") * RotSpeed * Time.deltaTime;
         transform.eulerAngles = new Vector3(0, Rotation, 0);
         if(Rotation > 0)
         {
-            anim.SetInteger("transitions", 1);
+            anim.SetBool("isWalking", true);
+            anim.SetBool("IsIdle", false);
+            anim.SetBool("IsRunning", false);
         }
         if(Rotation < 0)
         {
-            anim.SetInteger("transitions", 0);
+            anim.SetBool("isWalking", false);
+            anim.SetBool("IsIdle", true);
+            anim.SetBool("IsRunning", false);
         }
 
         MoveDirection.y -= Gravity * Time.deltaTime;
