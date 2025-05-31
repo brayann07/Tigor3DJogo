@@ -40,6 +40,7 @@ public class PlayerAndar : MonoBehaviour
                 anim.SetBool("IsIdle", false);
                 anim.SetBool("isWalking", false);
                 anim.SetBool("IsRunning", true);
+
             }
             else if (isMovingForward)
             {

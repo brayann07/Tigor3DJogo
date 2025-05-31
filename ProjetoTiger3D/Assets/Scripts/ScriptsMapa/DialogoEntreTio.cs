@@ -17,6 +17,7 @@ public class DialogoEntreTio : MonoBehaviour
     // ali em cima ta os sprites da cena
     public TMP_Text dialogoText;
     public TMP_Text dialogoTextTio;
+    public TMP_Text textodicaespaco;
     // textos de dialogo
     public Image BalaoChat;
     public Image BalaoChatTio;
@@ -39,6 +40,7 @@ public class DialogoEntreTio : MonoBehaviour
         BalaoChat.gameObject.SetActive(false);
         BalaoChatTio.gameObject.SetActive(false);
         whey.gameObject.SetActive(false);
+        textodicaespaco.gameObject.SetActive(false);
     }
 
     void Update()
@@ -71,12 +73,16 @@ public class DialogoEntreTio : MonoBehaviour
         switch (aux)
         {
             case 1:
+                textodicaespaco.gameObject.SetActive(true);
+                break;
+            case 2:
+                textodicaespaco.gameObject.SetActive(false);
                 BalaoChat.gameObject.SetActive(true);
                 dialogoText.gameObject.SetActive(true);
                 StartCoroutine(CooldownTiger());
                 dialogoText.text = "Tigor:\nEntão tio...como eu tava falando";
                 break;
-            case 2:
+            case 3:
                 BalaoChat.gameObject.SetActive(false);
                 dialogoText.gameObject.SetActive(false);
                 zap.Play();
@@ -84,7 +90,15 @@ public class DialogoEntreTio : MonoBehaviour
                 dialogoTextTio.gameObject.SetActive(true);
                 dialogoTextTio.text = "*Celular toca*";
                 break;
-            case 3:
+            case 4:
+                BalaoChat.gameObject.SetActive(false);
+                dialogoText.gameObject.SetActive(false);
+                zap.Play();
+                BalaoChatTio.gameObject.SetActive(true);
+                dialogoTextTio.gameObject.SetActive(true);
+                dialogoTextTio.text = "Tio do Tigor:\nEspera um pouco, Tigor";
+                break;
+            case 5:
                 BalaoChatTio.gameObject.SetActive(true);
                 dialogoTextTio.gameObject.SetActive(true);
                 StartCoroutine(CooldownTio());
@@ -93,13 +107,13 @@ public class DialogoEntreTio : MonoBehaviour
                 tioDeCostas.SetActive(true);
                 whey.gameObject.SetActive(true);
                 break;
-            case 4:
+            case 6:
                 BalaoChatTio.gameObject.SetActive(true);
                 dialogoTextTio.gameObject.SetActive(true);
                 StartCoroutine(CooldownTio());
                 dialogoTextTio.text = "Tio do Tigor:\nUhum, tá, beleza, vou te enviar alguém de confiança";
                 break;
-            case 5:
+            case 7:
                 BalaoChatTio.gameObject.SetActive(true);
                 dialogoTextTio.gameObject.SetActive(true);
                 tioLevantado.SetActive(true);
@@ -109,15 +123,31 @@ public class DialogoEntreTio : MonoBehaviour
                 dialogoTextTio.text = "Tio do Tigor:\nSeguinte, cê vai ter que salvar Crossing Woods sozinho, porque o tio tá ocupado";
                 
                 break;
-            case 6:
+            case 8:
                 BalaoChatTio.gameObject.SetActive(true);
                 dialogoTextTio.gameObject.SetActive(true);
                 tioLevantado.SetActive(true);
                 tioDeCostas.SetActive(false);
                 StartCoroutine(CooldownTio());
-                dialogoTextTio.text = "Tio do Tigor:\nAperta TAB pra ver os comandos, pq alguém tava com preguiça de criar mais dialogo(da mt trabalho)";
+                dialogoTextTio.text = "Tio do Tigor:\nLembra de tudo que o tio te ensinou sobre batalhas";
                 break;
-            case 7:
+            case 9:
+                BalaoChatTio.gameObject.SetActive(true);
+                dialogoTextTio.gameObject.SetActive(true);
+                tioLevantado.SetActive(true);
+                tioDeCostas.SetActive(false);
+                StartCoroutine(CooldownTio());
+                dialogoTextTio.text = "Tio do Tigor:\n 1 - ataque florestal, 2 - ataque psíquico, 3 - mete o soco";
+                break;
+            case 10:
+                BalaoChatTio.gameObject.SetActive(true);
+                dialogoTextTio.gameObject.SetActive(true);
+                tioLevantado.SetActive(true);
+                tioDeCostas.SetActive(false);
+                StartCoroutine(CooldownTio());
+                dialogoTextTio.text = "Tio do Tigor:\n Qualquer dúvida é só apartar TAB para lembrar";
+                break;
+            case 11:
                 BalaoChat.gameObject.SetActive(true);
                 dialogoText.gameObject.SetActive(true);
                 BalaoChatTio.gameObject.SetActive(false);
@@ -127,10 +157,17 @@ public class DialogoEntreTio : MonoBehaviour
                 tigerLevantado.SetActive(true);
                 dialogoText.text = "Tigor:\nQuê?? Como?? Pera aí!";
                 break;
-            case 8:
+            case 12:
+                BalaoChatTio.gameObject.SetActive(true);
+                dialogoTextTio.gameObject.SetActive(true);
+                tioLevantado.SetActive(true);
+                tioDeCostas.SetActive(false);
+                StartCoroutine(CooldownTio());
+                dialogoTextTio.text = "Tio do Tigor:\n Não fica aí parado, vai!!!";
+                break;
+            case 13:
                 TP.Play();
-                ChamarMapa();
-                dialogoAtivo = false;
+                StartCoroutine(AudioTP());
                 break;
             default:
                 Debug.Log("deu erro acho");
@@ -147,6 +184,12 @@ public class DialogoEntreTio : MonoBehaviour
         yield return new WaitForSeconds(2);
         tioFalando.Stop();
       }
+    private IEnumerator AudioTP(){
+        TP.Play();
+        yield return new WaitForSeconds(1);
+        ChamarMapa();
+        dialogoAtivo = false;
+    }
     void ChamarMapa()
     {
         SceneManager.LoadScene(1);
