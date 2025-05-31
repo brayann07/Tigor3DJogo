@@ -16,7 +16,7 @@ public class AtivarSoco : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha3)) // pra evitar spam acho
         {
             auxCD +=1;
-            anim.SetInteger("transitions",3);
+            anim.SetTrigger("IsSocando");
             StartCoroutine(Ativar());
         }
     }
