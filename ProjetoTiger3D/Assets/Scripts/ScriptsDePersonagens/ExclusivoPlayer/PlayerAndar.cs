@@ -15,6 +15,7 @@ public class PlayerAndar : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
+        PlantarPlanta();
     }
 
     void Update()
@@ -77,5 +78,17 @@ public class PlayerAndar : MonoBehaviour
         MoveDirection.y -= Gravity * Time.deltaTime;
 
         controller.Move(MoveDirection * Time.deltaTime);
+    }
+    public void PlantarPlanta()
+    {
+        if (anim != null)
+        {
+            Debug.Log("ele ta plantando");
+            anim.SetTrigger("plantando");
+        }
+        else
+        {
+            Debug.LogError("anim ta nula no tiger por algum motivo");
+        }
     }
 }
