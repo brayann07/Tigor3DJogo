@@ -30,6 +30,7 @@ public class PlayerAndar : MonoBehaviour
     void Move()
     {
         bool isMovingForward = Input.GetKey(KeyCode.W);
+        bool isMovingBackward = Input.GetKey(KeyCode.S);
         bool isRunning = isMovingForward && Input.GetKey(KeyCode.LeftShift);
 
         if (controller.isGrounded)
@@ -48,6 +49,13 @@ public class PlayerAndar : MonoBehaviour
                 anim.SetBool("IsIdle", false);
                 anim.SetBool("IsRunning", false);
                 anim.SetBool("isWalking", true);
+            }
+            else if (isMovingBackward)
+            {
+            MoveDirection = -Vector3.forward * Speed;
+                anim.SetBool("IsIdle", false);
+                anim.SetBool("IsRunning", false);
+                anim.SetBool("isWalking", true); // Usa mesma animação de andar
             }
             else
             {
