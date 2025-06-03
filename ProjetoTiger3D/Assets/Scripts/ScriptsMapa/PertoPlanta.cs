@@ -44,8 +44,10 @@ public class PertoPlanta : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     aux = 1;
+                    playerandar.auxiliar = 1;
                     inventario.qntMudaInt -= 1;
                     pedraDestruir += 1;
+                    StartCoroutine(VoltarZero());
                     planta.SetActive(true);
                     Destroy(textoPerto);
                     playerandar.PlantarPlanta();
@@ -73,5 +75,10 @@ public class PertoPlanta : MonoBehaviour
         balaoTiger.gameObject.SetActive(false);
         tigerFeliz.gameObject.SetActive(false);
         textoDialogo.text = "";
+    }
+     IEnumerator VoltarZero()
+    {
+        yield return new WaitForSeconds(5f);
+        playerandar.auxiliar = 0;
     }
 }

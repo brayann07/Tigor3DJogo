@@ -10,7 +10,7 @@ public class PlayerAndar : MonoBehaviour
     Vector3 MoveDirection;
     CharacterController controller;
     Animator anim;
-
+    public int auxiliar = 0;
     void Start()
     {
         controller = GetComponent<CharacterController>();
@@ -30,40 +30,30 @@ public class PlayerAndar : MonoBehaviour
 
     void Move()
     {
-        bool isMovingForward = Input.GetKey(KeyCode.W);
-        bool isMovingBackward = Input.GetKey(KeyCode.S);
-        bool isRunning = isMovingForward && Input.GetKey(KeyCode.LeftShift);
-
         if (controller.isGrounded)
         {
-            if (isRunning)
+            if (Input.GetKey(KeyCode.W) && Input.GetKey(KeyCode.LeftShift))
             {
                 MoveDirection = Vector3.forward * (3.0f * Speed);
-                anim.SetBool("IsIdle", false);
-                anim.SetBool("isWalking", false);
-                anim.SetBool("IsRunning", true);
-
+                anim.SetInteger("aux", 2);
             }
-            else if (isMovingForward)
+            else if (Input.GetKey(KeyCode.W))
             {
                 MoveDirection = Vector3.forward * Speed;
-                anim.SetBool("IsIdle", false);
-                anim.SetBool("IsRunning", false);
-                anim.SetBool("isWalking", true);
+                anim.SetInteger("aux", 1);
             }
-            else if (isMovingBackward)
+            else if (Input.GetKey(KeyCode.S))
             {
-            MoveDirection = -Vector3.forward * Speed;
-                anim.SetBool("IsIdle", false);
-                anim.SetBool("IsRunning", false);
-                anim.SetBool("isWalking", true); // Usa mesma animação de andar
+                MoveDirection = Vector3.back * Speed;
+                anim.SetInteger("aux", 1);
             }
             else
             {
-                MoveDirection = Vector3.zero;
-                anim.SetBool("IsIdle", true);
-                anim.SetBool("isWalking", false);
-                anim.SetBool("IsRunning", false);
+                if (auxiliar == 0)
+                {
+                    MoveDirection = Vector3.zero;
+                    anim.SetInteger("aux", 0);
+                }
             }
 
             MoveDirection = transform.TransformDirection(MoveDirection);
@@ -84,7 +74,7 @@ public class PlayerAndar : MonoBehaviour
         if (anim != null)
         {
             Debug.Log("ele ta plantando");
-            anim.SetTrigger("plantando");
+            anim.SetInteger("aux", 3);
         }
         else
         {
