@@ -12,7 +12,8 @@ public class PertoPlanta : MonoBehaviour
     public GameObject tigor;
     public TMP_Text textoPerto;
     public GameObject pedra;
-    public int pedraDestruir;
+    public GameObject explosaoParticulas;
+    public AudioSource explosaoAudio;
 
     public PlayerAndar playerandar;
     public Image balaoTiger;
@@ -20,37 +21,35 @@ public class PertoPlanta : MonoBehaviour
     public TMP_Text textoDialogo;
     public AudioSource tigerfalando;
 
-    Animator anim;
     private int aux = 0;
     void Start()
     {
         textoPerto.text = "";
-        playerandar = FindFirstObjectByType<PlayerAndar>();
         planta.gameObject.SetActive(false);
     }
 
-    
+
     void Update()
     {
-        InventarioPlayer inventario = FindFirstObjectByType<InventarioPlayer>();
+        InventarioPlayer inventario = UnityEngine.Object.FindFirstObjectByType<InventarioPlayer>();
+        PedraExplodir pedraExplodir = UnityEngine.Object.FindFirstObjectByType<PedraExplodir>();
+        PlayerAndar playerAndar = UnityEngine.Object.FindFirstObjectByType<PlayerAndar>();
         float distancia = Vector3.Distance(muda.transform.position, tigor.transform.position);
         if (distancia < 2)
         {
             if (inventario.qntMudaInt >= 1 && aux == 0)
             {
-                
                 textoPerto.text = "Aperte F para plantar a muda!";
                 Debug.Log("Planto a muda!");
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     aux = 1;
-                    playerandar.auxiliar = 1;
+                    playerAndar.auxiliar += 1;
                     inventario.qntMudaInt -= 1;
-                    pedraDestruir += 1;
+                    pedraExplodir.intPedraDestruir += 1;
                     StartCoroutine(VoltarZero());
                     planta.SetActive(true);
                     Destroy(textoPerto);
-                    playerandar.PlantarPlanta();
                 }
             }
             else
@@ -58,14 +57,16 @@ public class PertoPlanta : MonoBehaviour
                 textoPerto.text = "";
             }
         }
-    if(pedraDestruir == 3)
+        if (pedraExplodir.intPedraDestruir == 3)
         {
-            Destroy(pedra);
+            pedra.gameObject.SetActive(false);
+            pedra.GetComponent<Collider>().enabled = false;
             balaoTiger.gameObject.SetActive(true);
             tigerFeliz.gameObject.SetActive(true);
             tigerfalando.Play();
             textoDialogo.text = "Finalmente essa pedra foi quebrada!";
             StartCoroutine(Cooldown());
+            pedraExplodir.intPedraDestruir = 4;
         }
     }
     IEnumerator Cooldown()
@@ -78,7 +79,8 @@ public class PertoPlanta : MonoBehaviour
     }
      IEnumerator VoltarZero()
     {
+        PlayerAndar playerAndar = tigor.GetComponent<PlayerAndar>();
         yield return new WaitForSeconds(5f);
-        playerandar.auxiliar = 0;
+        playerAndar.auxiliar = 0;
     }
 }

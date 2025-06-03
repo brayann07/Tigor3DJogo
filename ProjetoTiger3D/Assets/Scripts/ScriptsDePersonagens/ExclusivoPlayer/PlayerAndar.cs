@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class PlayerAndar : MonoBehaviour
@@ -15,7 +16,6 @@ public class PlayerAndar : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponent<Animator>();
-        PlantarPlanta();
     }
 
     void Update()
@@ -55,7 +55,11 @@ public class PlayerAndar : MonoBehaviour
                     anim.SetInteger("aux", 0);
                 }
             }
-
+            if(auxiliar == 1)
+            {
+                anim.SetInteger("aux", 3);
+                StartCoroutine(Cooldown());
+            }
             MoveDirection = transform.TransformDirection(MoveDirection);
         }
 
@@ -69,16 +73,9 @@ public class PlayerAndar : MonoBehaviour
 
         controller.Move(MoveDirection * Time.deltaTime);
     }
-    public void PlantarPlanta()
+    IEnumerator Cooldown()
     {
-        if (anim != null)
-        {
-            Debug.Log("ele ta plantando");
-            anim.SetInteger("aux", 3);
-        }
-        else
-        {
-            Debug.LogError("anim ta nula no tiger por algum motivo");
-        }
+        yield return new WaitForSeconds(6f);
+        auxiliar = 0;
     }
 }
