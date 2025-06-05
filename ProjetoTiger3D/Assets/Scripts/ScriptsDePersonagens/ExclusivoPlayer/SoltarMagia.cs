@@ -25,13 +25,13 @@ public class SoltarMagia : MonoBehaviour
         {
             if (Input.GetKeyDown(KeyCode.Alpha1))
             {
-                anim.SetInteger("aux", 1);
+                anim.SetInteger("aux", 4);
                 AtirarPreto();
                 proximoDisparo = Time.time + cooldown;
             }
             else if (Input.GetKeyDown(KeyCode.Alpha2))
             { 
-                anim.SetTrigger("IsJogandoMagia");
+                 anim.SetInteger("aux", 4);
                 AtirarVerde();
                 proximoDisparo = Time.time + cooldown;
             }

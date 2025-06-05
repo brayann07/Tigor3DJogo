@@ -26,8 +26,8 @@ public class MudaColidir : MonoBehaviour
             else if(inventario.qntMudaInt == 1 || inventario.qntMudaInt == 2 ){
                 textoDialogo.text = "Tigor:\nTalvez se eu plantar no fim dessa floresta...";
             }
-            else if(inventario.qntMudaInt == 3){
-                textoDialogo.text = "Tigor:\nEnfim, vamos acabar com isso...";
+            else if(inventario.qntMudaInt > 2){
+                textoDialogo.text = "Tigor:\nEnfim, vamos lá...";
             } 
             muda.GetComponent<Collider>().isTrigger = false;
             StartCoroutine(Cooldown());

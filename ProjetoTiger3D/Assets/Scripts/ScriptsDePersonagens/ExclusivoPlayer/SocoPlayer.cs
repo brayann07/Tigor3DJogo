@@ -6,10 +6,10 @@ public class SocoPlayer : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         VidaInimigo vidainimigo = other.GetComponent<VidaInimigo>();
-        if (other.CompareTag("Inimigo"))
+        if (other.CompareTag("InimigoPreto") || other.CompareTag("InimigoVerde"))
         {
             if(vidainimigo != null)
-            Debug.Log("Socou o inimigo");
+            Debug.Log("Socou o inimigo preto ou verde");
             vidainimigo.TomarDano(playerNivel.numNivel);
         }
     }

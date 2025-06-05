@@ -1,24 +1,9 @@
 fileFormatVersion: 2
-guid: 5c624124152c2d84781892917fb4df24
+guid: 02a7fc4474b1f0d4aa273c1a471a8221
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Peasant_Girl_diffuse
-    second: {fileID: 2800000, guid: 4fc916981f5cd1c4cbeb696d26ae236a, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Peasant_Girl_normal
-    second: {fileID: 2800000, guid: 1b65dabcc96f6e74c947825b7feda1c1, type: 3}
-  - first:
-      type: UnityEngine:Texture2D
-      assembly: UnityEngine.CoreModule
-      name: Peasant_Girl_specular
-    second: {fileID: 2800000, guid: da325a877bd03ee4c9203869dbee7e5c, type: 3}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
