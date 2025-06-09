@@ -26,7 +26,7 @@ public class MudaColidir : MonoBehaviour
             else if(inventario.qntMudaInt == 1 || inventario.qntMudaInt == 2 ){
                 textoDialogo.text = "Tigor:\nTalvez se eu plantar no fim dessa floresta...";
             }
-            else if(inventario.qntMudaInt > 2){
+            else if(inventario.qntMudaInt > 2 || playernivel.numNivel == 3){
                 textoDialogo.text = "Tigor:\nEnfim, vamos lá...";
             } 
             muda.GetComponent<Collider>().isTrigger = false;

@@ -51,9 +51,4 @@ public class VidaInimigo : MonoBehaviour
         Destroy(gameObject);
         //futuro transitions aq pra morrer
     }
-
-    internal void TomarDano(PlayerNivel playerNivel)
-    {
-        throw new NotImplementedException();
-    }
 }

@@ -7,11 +7,11 @@ public class MagoIA : MonoBehaviour
     public float cooldown = 2f;  
     public GameObject magiaPreta;  
     private float ultimaVezqataco;
-
+    public Transform alvoOlhar;
     void Update()
     {
+        transform.LookAt(alvoOlhar);
         float distancia = Vector3.Distance(transform.position, alvo.position);
-
         if (distancia <= rangedeatq && Time.time >= ultimaVezqataco + cooldown)
         {
             AtacarMagia();
