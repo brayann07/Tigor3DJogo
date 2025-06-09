@@ -26,6 +26,7 @@ public class Projetil : MonoBehaviour
          if (other.CompareTag("InimigoVerde"))
         {
             if(scriptdeVidadoInimigo != null){
+                Debug.Log("atingi o mago verde!");
                 scriptdeVidadoInimigo.TomarDano(playerNivel.numNivel);
             }
             Destroy(gameObject);

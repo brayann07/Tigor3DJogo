@@ -25,13 +25,17 @@ public class InventarioPlayer : MonoBehaviour{
     }
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.E) && aux == 0){
+        if (Input.GetKeyDown(KeyCode.E) && aux == 0)
+        {
             inventarioPanel.gameObject.SetActive(true);
             aux++;
+            Time.timeScale = 0;
         }
-        else if (Input.GetKeyDown(KeyCode.E) && aux == 1){
+        else if (Input.GetKeyDown(KeyCode.E) && aux == 1)
+        {
             inventarioPanel.gameObject.SetActive(false);
             aux--;
+            Time.timeScale = 1;
         }
     }
     public void Comer(){

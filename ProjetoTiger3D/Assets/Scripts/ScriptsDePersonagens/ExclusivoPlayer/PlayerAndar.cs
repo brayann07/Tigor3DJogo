@@ -21,11 +21,6 @@ public class PlayerAndar : MonoBehaviour
     void Update()
     {
         Move();
-
-        if (controller.isGrounded && verticalVelocity < 0)
-        {
-            verticalVelocity = -2f;
-        }
     }
 
     void Move()
