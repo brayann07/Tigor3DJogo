@@ -32,6 +32,11 @@ public class PlayerAndar : MonoBehaviour
                 MoveDirection = Vector3.forward * (3.0f * Speed);
                 anim.SetInteger("aux", 2);
             }
+            else if (Input.GetKey(KeyCode.S) && Input.GetKey(KeyCode.LeftShift))
+            {
+                MoveDirection = Vector3.back * (3.0f * Speed);
+                anim.SetInteger("aux", 2);
+            }
             else if (Input.GetKey(KeyCode.W))
             {
                 MoveDirection = Vector3.forward * Speed;
@@ -40,6 +45,16 @@ public class PlayerAndar : MonoBehaviour
             else if (Input.GetKey(KeyCode.S))
             {
                 MoveDirection = Vector3.back * Speed;
+                anim.SetInteger("aux", 1);
+            }
+            else if (Input.GetKey(KeyCode.D))
+            {
+                MoveDirection = Vector3.right * Speed;
+                anim.SetInteger("aux", 1);
+            }
+            else if (Input.GetKey(KeyCode.A))
+            {
+                MoveDirection = Vector3.left * Speed;
                 anim.SetInteger("aux", 1);
             }
             else

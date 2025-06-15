@@ -14,22 +14,33 @@ public class Projetil : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         VidaInimigo scriptdeVidadoInimigo = other.GetComponent<VidaInimigo>();
+        BossIA bossIA = other.GetComponent<BossIA>();
         if (other.CompareTag("Inimigo"))
         {
 
-            if(scriptdeVidadoInimigo != null){
+            if (scriptdeVidadoInimigo != null)
+            {
                 scriptdeVidadoInimigo.TomarDano(playerNivel.numNivel);
             }
             Destroy(gameObject);
         }
 
-         if (other.CompareTag("InimigoVerde"))
+        if (other.CompareTag("InimigoVerde"))
         {
-            if(scriptdeVidadoInimigo != null){
+            if (scriptdeVidadoInimigo != null)
+            {
                 Debug.Log("atingi o mago verde!");
                 scriptdeVidadoInimigo.TomarDano(playerNivel.numNivel);
             }
             Destroy(gameObject);
+        }
+        if (other.CompareTag("Boss"))
+        {
+            if (bossIA != null)
+            {
+                bossIA.numDevidas -= playerNivel.numNivel;
+                Debug.Log("tirei vida correspondente ao nivel");
+            }
         }
     }
 }

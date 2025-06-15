@@ -15,7 +15,6 @@ public class MagoBrancoIA : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.LookAt(alvoOlhar);
         float distancia = Vector3.Distance(gameObject.transform.position, alvo.transform.position);
         if (distancia < 10)
         {

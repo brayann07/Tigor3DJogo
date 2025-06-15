@@ -1,49 +1,136 @@
-// using Unity.VisualScripting;
-// using UnityEngine;
-// public class BossIA : MonoBehaviour
-// {
-//     public GameObject player;
-//     public GameObject pedra;
-//     public int auxMudas = 0;
-//     private float speed = 5f;
-//     private bool atqAtivo = false;
-//     void Update()
-//     {
-//         float distancia = Vector3.Distance(transform.position, player.transform.position);
-//         if (distancia <= 10 && auxMudas == 1)
-//         {
-//             seguirJogador();
-//         }
-//     }
-//     void valorAleatorio()
-//     {
+using System.Collections;
+using TMPro;
+using Unity.VisualScripting;
+using UnityEditor.SearchService;
+using UnityEngine;
+using UnityEngine.SceneManagement;
+public class BossIA : MonoBehaviour
+{
+    public GameObject player;
+    public GameObject pedra;
+    private float speed = 5f;
+    private bool atqAtivo = false;
+    public bool aoGanhar = false;
+    private float distanciaValor = 10f;
+    public AudioSource musicaTocandoAgora;
+    public AudioSource musicafinal;
+    int aux = 0;
+    bool textoVidaAparecer = false;
+    public TMP_Text textoVida;
+    public int numDevidas = 30;
+    public float VelocidadeOriginal = 5f;
+    public GameObject magiaPreta;
+    public GameObject magiaVerde;
+    void Start()
+    {
+        textoVida.gameObject.SetActive(false);
+        musicafinal.loop = true;
+    }
+    void Update()
+    {
+        transform.LookAt(player.transform);
+        float distancia = Vector3.Distance(transform.position, player.transform.position);
+        if (distancia <= 20)
+        {
+            trocarMusica();
+        }
+        if (distancia <= distanciaValor && aux == 0)
+        {
+            speed = VelocidadeOriginal * 3;
+            textoVidaAparecer = true;
+            distanciaValor = 1000f;
+            seguirJogador();
+        }
+        if (textoVidaAparecer)
+        {
+            textoVida.gameObject.SetActive(true);
+            textoVida.text = "VIDA TOTAL DO BOSS:" + numDevidas;
+        }
+        if (numDevidas <= 0)
+        {
+            aoGanhar = true;
+        }
+        if (aoGanhar)
+        {
+            SceneManager.LoadScene("Ganhar");
+        }
+    }
+   void trocarMusica()
+{
+    if (!musicafinal.isPlaying)
+    {
+        musicaTocandoAgora.Stop();
+        musicafinal.Play();
+    }
+}
+    void valorAleatorio()
+    {
+        int numEscolhido = Random.Range(1, 4);    // vai chamar algum void aq;
+        if (numEscolhido == 1)
+        {
+            AtacarFisico();
+        }
+        else if (numEscolhido == 2)
+        {
+            AtacarMagiaPreta();
+        }
+        else if (numEscolhido == 3)
+        {
+            AtacarMagiaVerde();
+        }
+        else
+        {
+            Debug.Log("oxi, bugou!");
+        }
+    }
+    void seguirJogador()
+    {
+        float distancia = Vector3.Distance(transform.position, player.transform.position);
+        if (atqAtivo == false)
+        {
+            Vector3 direcao = (player.transform.position - transform.position).normalized;
+            transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        }
+        if (distancia <= 10)
+        {
+            atqAtivo = true;
+            valorAleatorio();
+        }
+    }
+    void AtacarFisico()
+    {
+        atqAtivo = false;
+        Debug.Log("escolhi fisico!");
+    }
+    void AtacarMagiaPreta()
+    {
+        Debug.Log("escolhi preto!");
+        StartCoroutine(CooldowndeMovimento());
 
-//     }
-//     void seguirJogador()
-//     {
-//         Vector3 direcao = (player.transform.position - transform.position).normalized;
-//         transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-//         float distancia = Vector3.Distance(transform.position, player.transform.position);
-//         if (distancia <= 2)
-//         {
-//             atqAtivo = true;
-//             if (atqAtivo == true)
-//             {
-//                 speed = 0f;
-                
-//             }   
-//         }
-//     }
-//     void AtacarFisico()
-//     {
-//         atqAtivo = false;
-//     }
-//     void AtacarMagiaPreta()
-//     {
+        GameObject magia = Instantiate(magiaVerde, transform.position, Quaternion.identity);
+        magia.transform.localScale *= 2f;
+        ProjetilInimigo scriptdeMagia = magia.GetComponent<ProjetilInimigo>();
+        scriptdeMagia.direction = (player.transform.position - transform.position).normalized;
+        Destroy(magia, 1f);
+        atqAtivo = false;
+    }
+    void AtacarMagiaVerde()
+    {
+        Debug.Log("escolhi verde!");
+        StartCoroutine(CooldowndeMovimento());
 
-//     }
-//     void AtacarMagiaVerde()
-//     {
-        
-//     }
-// }
+        GameObject magia = Instantiate(magiaPreta, transform.position, Quaternion.identity);
+        magia.transform.localScale *= 2f;
+        ProjetilInimigo scriptdeMagia = magia.GetComponent<ProjetilInimigo>();
+        scriptdeMagia.direction = (player.transform.position - transform.position).normalized;
+        Destroy(magia, 1f);
+        atqAtivo = false;
+    }
+    public IEnumerator CooldowndeMovimento()
+    {
+        aux = 1;
+        speed = 0f;
+        yield return new WaitForSeconds(2);
+        aux = 0;
+    }
+}

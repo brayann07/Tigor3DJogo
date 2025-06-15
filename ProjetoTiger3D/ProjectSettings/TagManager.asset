@@ -8,6 +8,7 @@ TagManager:
   - Terrain
   - InimigoPreto
   - InimigoVerde
+  - Boss
   layers:
   - Default
   - TransparentFX
