@@ -2,20 +2,33 @@ using UnityEngine;
 
 public class CameraSeguir : MonoBehaviour
 {
-    public Transform target;
+    public Transform alvo;  // jogador
     public float distancia = 5f;
     public float altura = 2f;
-    public float followSpeed = 5f;
+    public float sensibilidade = 100f;
 
+    private float anguloAtual = 0f;
+    void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+    }
     void LateUpdate()
     {
-        if (target == null)
-        {
-            Debug.Log("Ta nulo esse objeto!");
-            return;
-        }
-        Vector3 behindTarget = target.position - target.forward * distancia + Vector3.up * altura;
-        transform.position = Vector3.Lerp(transform.position, behindTarget, followSpeed * Time.deltaTime);
-        transform.LookAt(target.position + Vector3.up * 1.5f);
+        if (alvo == null) return;
+
+        float mouseX = Input.GetAxis("Mouse X") * sensibilidade * Time.deltaTime;
+        anguloAtual += mouseX;
+
+        Quaternion rotacao = Quaternion.Euler(0f, anguloAtual, 0f);
+        Vector3 direcao = rotacao * Vector3.back;
+
+        Vector3 posDesejada = alvo.position + direcao * distancia + Vector3.up * altura;
+        transform.position = posDesejada;
+
+        transform.LookAt(alvo.position + Vector3.up * 1.5f);
+
+        
+        alvo.rotation = Quaternion.Euler(0f, anguloAtual, 0f);
     }
 }
