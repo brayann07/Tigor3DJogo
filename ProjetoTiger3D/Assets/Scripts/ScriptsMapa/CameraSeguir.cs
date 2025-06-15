@@ -10,8 +10,7 @@ public class CameraSeguir : MonoBehaviour
     private float anguloAtual = 0f;
     void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
     }
     void LateUpdate()
     {

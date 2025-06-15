@@ -17,10 +17,11 @@ public class BossIA : MonoBehaviour
     int aux = 0;
     bool textoVidaAparecer = false;
     public TMP_Text textoVida;
-    public int numDevidas = 30;
+    public int numDevidas = 40;
     public float VelocidadeOriginal = 5f;
     public GameObject magiaPreta;
     public GameObject magiaVerde;
+    public float tempodeespera = 2f;
     void Start()
     {
         textoVida.gameObject.SetActive(false);
@@ -41,10 +42,27 @@ public class BossIA : MonoBehaviour
             distanciaValor = 1000f;
             seguirJogador();
         }
+        if (distancia <= distanciaValor && aux == 0 && numDevidas<=20)
+        {
+            speed = VelocidadeOriginal * 4;
+            textoVidaAparecer = true;
+            distanciaValor = 1000f;
+            seguirJogador();
+        }
         if (textoVidaAparecer)
         {
             textoVida.gameObject.SetActive(true);
-            textoVida.text = "VIDA TOTAL DO BOSS:" + numDevidas;
+            if (numDevidas > 15)
+            {
+                textoVida.text = "VIDA TOTAL DO BOSS:" + numDevidas;
+            }
+            else if (numDevidas <= 15)
+            {
+                textoVida.fontSize = 50;
+                textoVida.text = "O BOSS ESTÁ FURIOSO!!!\nVIDA TOTAL DO BOSS:" + numDevidas;
+                tempodeespera = 0.5f;
+            }
+            
         }
         if (numDevidas <= 0)
         {
@@ -52,7 +70,7 @@ public class BossIA : MonoBehaviour
         }
         if (aoGanhar)
         {
-            SceneManager.LoadScene("Ganhar");
+            SceneManager.LoadScene(3);
         }
     }
    void trocarMusica()
@@ -91,7 +109,7 @@ public class BossIA : MonoBehaviour
             Vector3 direcao = (player.transform.position - transform.position).normalized;
             transform.position = Vector3.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         }
-        if (distancia <= 10)
+        if (distancia <= 7)
         {
             atqAtivo = true;
             valorAleatorio();
@@ -130,7 +148,7 @@ public class BossIA : MonoBehaviour
     {
         aux = 1;
         speed = 0f;
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(tempodeespera);
         aux = 0;
     }
 }

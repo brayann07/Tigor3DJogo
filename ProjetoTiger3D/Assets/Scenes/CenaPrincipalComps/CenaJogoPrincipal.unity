@@ -1083,10 +1083,11 @@ MonoBehaviour:
   musicaTocandoAgora: {fileID: 33310209}
   musicafinal: {fileID: 1730175027}
   textoVida: {fileID: 1051215316}
-  numDevidas: 30
+  numDevidas: 40
   VelocidadeOriginal: 5
   magiaPreta: {fileID: 495686580}
   magiaVerde: {fileID: 422207498}
+  tempodeespera: 2
 --- !u!65 &205673788
 BoxCollider:
   m_ObjectHideFlags: 0
